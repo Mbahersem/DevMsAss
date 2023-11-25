@@ -2,23 +2,18 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import './index.css'
 import {
-  CreateBrowserRouter,
+  createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
 // import Root from './routes/root';
-import Login, {action as loginAction } from './routes/login';
-import Update from './routes/update'
+import Login, { action as loginAction } from './routes/login';
+import Update, { action as updateAction } from './routes/update'
 import ErrorPage from './error-page';
 
 
-const router = CreateBrowserRouter([
+const router = createBrowserRouter([
   {
     path: "/",
-    element: <div>Hello world!</div>,
-    errorElement: <ErrorPage />,
-  },
-  {
-    path: "/login",
     element: <Login />,
     errorElement: <ErrorPage />,
     action: loginAction
@@ -27,7 +22,7 @@ const router = CreateBrowserRouter([
     path: "/update/:email",
     element: <Update />,
     errorElement: <ErrorPage />,
-    action: loginAction
+    action: updateAction
   },
 
 ]);

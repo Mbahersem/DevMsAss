@@ -5,7 +5,7 @@ export async function action({request}) {
     const formData = await request.formData();
     const updates = Object.fromEntries(formData);
     await loginUser(updates);
-    redirect(`/update/${updates.email}`);
+    return redirect(`/update/${updates.email}`);
 }
 
 export default function Login() {
