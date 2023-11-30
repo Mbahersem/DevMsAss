@@ -2,4 +2,44 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+    font-family: Aptos, 'Century Gothic';
+}
+
+#root {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.login {
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+    width: 25%;
+    height: 150px;
+    border-radius: 25px;
+    border: 1px solid rgb(93, 93, 95);
+    align-items: center;
+}
+
+.login input {
+    outline: none;
+    border-radius: 5px;
+    border: 1px solid rgb(93, 93, 95);
+    margin-bottom: 15px;
+    height: 35px;
+    font-size: 0.8rem;
+}
+
+.login button {
+    outline: none;
+    border-radius: 5px;
+    border: 1px solid rgb(93, 93, 95);
+    width: 70px;
+    height: 35px;
+}
+
+.login button:hover {
+    cursor: pointer;
 }
