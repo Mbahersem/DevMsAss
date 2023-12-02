@@ -5,7 +5,7 @@ export async function loginUser(query) {
         email: query.email,
         password: query.password,
     };
-    console.log(body)
+
     try {
         const res = await axios.post('http://localhost:5000/api/users/login', body, {
             headers: {
@@ -46,6 +46,21 @@ export async function updateUser(email, updates) {
     return null;
 }
 
-// export async function registerUser(query) {
+export async function loggedUsingGoogle(email) {
+    const body = {email: email};
+    console.log(body)
 
-// }
+    try {
+        const res = axios.post("http://localhost:5000/api/users/google-login", body, {
+            headers: {
+                'Content-Type': 'application/json',
+            }
+        });
+
+        if(res.data.accessToken) {
+            localStorage.setItem('assoc', res.data.accessToken);
+        }
+    } catch (error) {
+        throw new Error(error);
+    }
+}
