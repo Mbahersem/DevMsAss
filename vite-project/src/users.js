@@ -7,7 +7,7 @@ export async function loginUser(query) {
     };
 
     try {
-        const res = await axios.post('http://localhost:5000/api/users/login', body, {
+        const res = await axios.post('http://localhost:5001/api/users/login', body, {
             headers: {
                 'Content-Type': 'application/json',
             },
@@ -32,7 +32,7 @@ export async function updateUser(email, updates) {
 
     try {
         const token = localStorage.getItem('assoc');
-        const res = await axios.put(`http://localhost:5000/api/users/${email}`, body, {
+        const res = await axios.put(`http://localhost:5001/api/users/${email}`, body, {
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': `Bearer ${token}`
@@ -51,12 +51,11 @@ export async function loggedUsingGoogle(email) {
     console.log(body)
 
     try {
-        const res = axios.post("http://localhost:5000/api/users/google-login", body, {
+        const res = await axios.post("http://localhost:5001/api/users/google-login", body, {
             headers: {
                 'Content-Type': 'application/json',
             }
         });
-
         if(res.data.accessToken) {
             localStorage.setItem('assoc', res.data.accessToken);
         }

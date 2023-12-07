@@ -1,13 +1,21 @@
 import { useEffect } from "react";
 import { loggedUsingGoogle } from "../users";
+import { jwtDecode } from 'jwt-decode';
+import { useNavigate } from "react-router-dom";
 
 const clientId = "856362789-ohj46sld5c9su5dq06sq5dcv2tlb8d5k.apps.googleusercontent.com";
 
-export default function GLogin() {
+export default function GLogin({user, setUser}) {
+    const navigate = useNavigate();
+    
     function handleCredentialResponse(response) {
-        console.log("Encoded JWT ID token" + response.credential);
-    }
+        const res = jwtDecode(response.credential);
+        console.log(user);
+        setUser(res);
 
+        navigate('/home');
+    }
+    
     useEffect(() => {
         google.accounts.id.initialize({
             client_id: clientId,
@@ -18,7 +26,18 @@ export default function GLogin() {
             { theme: "outline", size: "large" }
         );
         google.accounts.id.prompt();
-    })
+    });
+
+    useEffect(() => {
+        const asyncLogin = async () => {
+            if(user.email) {
+                loggedUsingGoogle(user.email);
+            }
+        }
+        asyncLogin();
+
+    }, [user]);
+
     return (
         <div id="sign-in-button">
 

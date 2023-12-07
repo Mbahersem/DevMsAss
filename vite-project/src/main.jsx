@@ -8,6 +8,7 @@ import {
 // import Root from './routes/root';
 import Login, { action as loginAction } from './routes/login';
 import Update, { action as updateAction } from './routes/update'
+import Dashboard from './routes/dashboard';
 import ErrorPage from './error-page';
 
 
@@ -24,6 +25,11 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage />,
     action: updateAction
   },
+  {
+    path:"/home",
+    element: <Dashboard />,
+    errorElement: <ErrorPage />,
+  }
 
 ]);
 
