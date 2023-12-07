@@ -6,7 +6,6 @@ import { useEffect } from "react";
 import { gapi } from "gapi-script";
 
 const clientId = "856362789-ohj46sld5c9su5dq06sq5dcv2tlb8d5k.apps.googleusercontent.com";
-console.log(clientId);
 
 export async function action({request}) {
     const formData = await request.formData();
@@ -16,33 +15,22 @@ export async function action({request}) {
 }
 
 export default function Login() {
-    const [loggedIn, setLoggeIn] = useState(false);
+    // const [loggedIn, setLoggeIn] = useState(false);
 
-    const onSuccess = (res) => {
-        console.log("LOGIN SUCCESS ! Current user : ", res.profileObj);
-        setLoggeIn(true);
+    // const onSuccess = (res) => {
+    //     console.log("LOGIN SUCCESS ! Current user : ", res.profileObj);
+    //     setLoggeIn(true);
 
-        useEffect(async () => {
-            await loggedUsingGoogle(res.profileObj.email);
-            return redirect(`/update/${res.profileObj.email}`);
-        }, [loggedIn]);
+    //     useEffect(async () => {
+    //         await loggedUsingGoogle(res.profileObj.email);
+    //         return redirect(`/update/${res.profileObj.email}`);
+    //     }, [loggedIn]);
 
-    }
+    // }
 
-    const onFailure = (res) => {
-        console.log("LOGIN FAILED ! res : ", res);
-    }
-
-    useEffect(() => {
-        function start() {
-            gapi.client.init({
-                clientId: clientId,
-                scope: ""
-            });
-        }
-
-        gapi.load('client:auth2', start);
-    });
+    // const onFailure = (res) => {
+    //     console.log("LOGIN FAILED ! res : ", res);
+    // }
 
     return(
         <>
@@ -51,10 +39,7 @@ export default function Login() {
                 <input type="password" name="password" placeholder="Password" />
                 <button type="submit">Login</button>
             </Form>
-            <GLogin 
-                onSuccess={onSuccess}
-                onFailure={onFailure}
-            />
+            <GLogin />
         </>
     );
 }
