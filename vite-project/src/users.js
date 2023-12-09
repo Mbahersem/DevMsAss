@@ -1,5 +1,27 @@
 import axios from 'axios'
 
+export async function createUser(query) {
+    const body = {
+        email: query.email,
+        name: query.name,
+        password: query.password,
+    };
+
+    try {
+        const res = await axios.post('http://localhost:5001/api/users/registration', body, {
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        });
+
+    } catch (error) {
+        throw new Error(error);
+    }
+
+    return null;
+}
+
+
 export async function loginUser(query) {
     const body = {
         email: query.email,
@@ -21,7 +43,6 @@ export async function loginUser(query) {
     }
 
     return null;
-
 }
 
 export async function updateUser(email, updates) {

@@ -7,7 +7,8 @@ import {
 } from "react-router-dom";
 // import Root from './routes/root';
 import Login, { action as loginAction } from './routes/login';
-import Update, { action as updateAction } from './routes/update'
+import Update, { action as updateAction } from './routes/update';
+import SignUp, {action as signUpAction} from './routes/signup';
 import Dashboard from './routes/dashboard';
 import ErrorPage from './error-page';
 
@@ -29,7 +30,13 @@ const router = createBrowserRouter([
     path:"/home",
     element: <Dashboard />,
     errorElement: <ErrorPage />,
-  }
+  },
+  {
+    path: "/signup",
+    element: <SignUp />,
+    errorElement: <ErrorPage />,
+    action: signUpAction
+  },
 
 ]);
 
