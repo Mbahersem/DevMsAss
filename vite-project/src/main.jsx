@@ -5,13 +5,12 @@ import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
-// import Root from './routes/root';
+
 import Login, { action as loginAction } from './routes/login';
 import Update, { action as updateAction } from './routes/update';
 import SignUp, {action as signUpAction} from './routes/signup';
-import Dashboard from './routes/dashboard';
+import Dashboard, { loader as userLoader } from './routes/dashboard';
 import ErrorPage from './error-page';
-
 
 const router = createBrowserRouter([
   {
@@ -27,9 +26,10 @@ const router = createBrowserRouter([
     action: updateAction
   },
   {
-    path:"/home",
+    path:"/home/:email?",
     element: <Dashboard />,
     errorElement: <ErrorPage />,
+    loader: userLoader
   },
   {
     path: "/signup",
@@ -40,8 +40,15 @@ const router = createBrowserRouter([
 
 ]);
 
+function App() {
+
+  return (
+    <React.StrictMode>
+        <RouterProvider router={router} />
+    </React.StrictMode>
+  );
+}
+
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
-    <RouterProvider router={router} />
-  </React.StrictMode>,
-)
+  <App />
+);

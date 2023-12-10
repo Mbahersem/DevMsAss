@@ -10,10 +10,11 @@ export default function GLogin({user, setUser}) {
     
     function handleCredentialResponse(response) {
         const res = jwtDecode(response.credential);
-        console.log(user);
+        console.log(res);
         setUser(res);
+        console.log(user);
 
-        navigate('/home');
+        navigate(`/home`);
     }
     
     useEffect(() => {

@@ -16,7 +16,8 @@
 }
 
 .container-login,
-.container-signup {
+.container-signup,
+.edit-container {
     position: relative;
     width: 100%;
     display: flex;
@@ -26,7 +27,8 @@
 }
 
 .login,
-.signup {
+.signup,
+.edit {
     display: flex;
     flex-direction: column;
     padding: 15px;
@@ -42,7 +44,8 @@
 }
 
 .login input,
-.signup input {
+.signup input,
+.edit input {
     outline: none;
     border-radius: 5px;
     border: 1px solid rgb(93, 93, 95);
@@ -60,7 +63,8 @@
 
 .login button,
 .signup button,
-.dashboard button {
+.dashboard button,
+.edit button {
     outline: none;
     border-radius: 5px;
     border: 1px solid rgb(93, 93, 95);
@@ -74,7 +78,15 @@
 
 .login button:hover,
 .signup button:hover,
-.dashboard button:hover {
+.dashboard button:hover,
+.edit button:hover {
     cursor: pointer;
     background-color: rgb(85, 85, 143);
+}
+
+.dashboard {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 60%;
 }
