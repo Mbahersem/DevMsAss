@@ -12,8 +12,15 @@ export default function Update() {
     return (
         <div className="edit-container">
             <Form method="post" className="edit">
-                <input type="text" name="name" placeholder="Name" />
-                <input type="password" name="password" placeholder="Password" />
+                <h1>Edit informations</h1>
+                <div>
+                    <label htmlFor="name">Name</label>
+                    <input type="text" name="name" placeholder="Name" />
+                </div>
+                <div>
+                    <label htmlFor="password">Password</label>
+                    <input type="password" name="password" placeholder="Password" />
+                </div>
                 <button type="submit">Update</button>
             </Form>
         </div>

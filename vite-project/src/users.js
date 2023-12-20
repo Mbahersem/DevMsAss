@@ -11,7 +11,6 @@ export async function createUser(query) {
         const res = await axios.post('http://localhost:5001/api/users/registration', body, {
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': `Bearer ${token}`
             },
         });
 
