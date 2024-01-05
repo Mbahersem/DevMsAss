@@ -13,8 +13,9 @@ export default function GLogin({user, setUser}) {
         console.log(res);
         setUser(res);
         console.log(user);
-
-        navigate(`/home`);
+        setTimeout(() => {
+            navigate(`/home/${res.email}`);
+        }, 1000);
     }
     
     useEffect(() => {
@@ -27,12 +28,12 @@ export default function GLogin({user, setUser}) {
             { theme: "outline", size: "large" }
         );
         google.accounts.id.prompt();
-    });
+    }, []);
 
     useEffect(() => {
         const asyncLogin = async () => {
             if(user.email) {
-                loggedUsingGoogle(user.email);
+                loggedUsingGoogle(user);
             }
         }
         asyncLogin();

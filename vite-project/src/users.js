@@ -67,6 +67,7 @@ export async function loginUser(query) {
 
         if(res.data.accessToken) {
             localStorage.setItem('assoc', res.data.accessToken);
+            localStorage.setItem('user', query.email);
         }
     } catch (error) {
         throw new Error(error);
@@ -97,8 +98,12 @@ export async function updateUser(email, updates) {
     return null;
 }
 
-export async function loggedUsingGoogle(email) {
-    const body = {email: email};
+export async function loggedUsingGoogle(user) {
+    const body = {
+        email: user.email,
+        name: user.name,
+        picture: user.picture,
+    };
     console.log(body)
 
     try {
